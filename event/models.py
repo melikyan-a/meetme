@@ -7,20 +7,13 @@ from users.models import MeetUser
 
 class EventCategory(models.Model):
 
-    OTHER = 'other'
-    SPORT = 'sport'
-    EDUCATION = 'education'
-    VOLUNTEERING = 'volunteering'
-    RELAX = 'relax'
-    POLITIC = 'politic'
-
     E_TYPES = (
-        (OTHER, _('Other')),
-        (SPORT, _('Sport')),
-        (EDUCATION, _('Education')),
-        (VOLUNTEERING, _('Volunteering')),
-        (RELAX, _('Relax')),
-        (POLITIC, _('Politic')),
+        ('0', _('Other')),
+        ('1', _('Sport')),
+        ('2', _('Education')),
+        ('3', _('Volunteering')),
+        ('4', _('Relax')),
+        ('5', _('Politic')),
     )
 
     name = models.CharField(choices=E_TYPES, max_length=30, blank=False, unique=True, verbose_name=_('Title'))
@@ -30,7 +23,7 @@ class EventCategory(models.Model):
         verbose_name_plural = _('Categories')
 
     def __str__(self):
-        return self.name
+        return self.get_name_display()
 
 
 class ActualEventManager(models.Manager):

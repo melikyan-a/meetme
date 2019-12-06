@@ -16,7 +16,7 @@ class Activity(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=30, blank=False, default=_('Flash mob'), unique=True, verbose_name=_('Title'))
     category = models.ForeignKey(EventCategory, on_delete=models.CASCADE,
-                                 verbose_name=_('Event Category'), default='other')
+                                 verbose_name=_('Event Category'), default='0')
     is_active = models.BooleanField(default=True, verbose_name=_('Show to users?'))
     objects = models.Manager()  # The default manager.
     current_activities = ActualActivityManager()  # only active activities
