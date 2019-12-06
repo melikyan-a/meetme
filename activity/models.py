@@ -3,6 +3,7 @@ from django.db import models
 from event.models import EventCategory
 from django.utils.translation import ugettext_lazy as _
 from users.models import MeetUser
+from django.conf import settings
 
 
 # Create your models here.
@@ -29,6 +30,9 @@ class Activity(models.Model):
 
     def __str__(self):
         return str(self.id)
+
+    def get_image(self):
+        return settings.SITE_URL + self.image.url
 
 
 class UserActivity(models.Model):
