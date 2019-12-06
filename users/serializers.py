@@ -65,7 +65,7 @@ class UserLikemeSerializer(serializers.Serializer):
                     'first_name': u.first_name,
                     'last_name': u.last_name,
                     'email': u.email,
-                    'avatar': u.avatar.url,
+                    'avatar': u.get_avatar(),
                 }
                 resp.append(item)
 
@@ -125,7 +125,7 @@ class EASerializer(serializers.Serializer):
                 'id': a.pk,
                 'name': a.name,
                 'cat': a.category.name,
-                'image': a.image.url,
+                'image': a.get_image(),
                 "like": False,
             }
             resp.append(item)
@@ -142,7 +142,7 @@ class EASerializer(serializers.Serializer):
                 'name': e.name,
                 'cat': e.category.name,
                 'dt': e.dt,
-                'image': e.image.url,
+                'image': e.get_image(),
                 'like': False
             }
             resp.append(item)
@@ -184,7 +184,7 @@ class UserCrossLikedSerializer(serializers.Serializer):
                     'first_name': u.first_name,
                     'last_name': u.last_name,
                     'email': u.email,
-                    'avatar': u.avatar.url,
+                    'avatar': u.get_avatar(),
                 }
                 resp.append(item)
 
@@ -218,7 +218,7 @@ class UserLikedSerializer(serializers.Serializer):
                     'first_name': u.first_name,
                     'last_name': u.last_name,
                     'email': u.email,
-                    'avatar': u.avatar.url,
+                    'avatar': u.get_avatar(),
                 }
                 resp.append(item)
 
