@@ -38,7 +38,7 @@ class Event(models.Model):
     today = timezone.now
     name = models.CharField(verbose_name=_('Title'), max_length=30, blank=False, default=_('Sabantuy'))
     category = models.ForeignKey(EventCategory, on_delete=models.CASCADE,
-                                 verbose_name=_('Event Category'), default='other')
+                                 verbose_name=_('Event Category'), default='0')
     dt = models.DateTimeField(blank=False, verbose_name=_('Date and time of the event'), default=today)
     is_active = models.BooleanField(default=True, verbose_name=_('Show to users?'))
     objects = models.Manager()
