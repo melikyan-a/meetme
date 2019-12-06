@@ -1,0 +1,8 @@
+Django
+djangorestframework
+Pillow
+django-filter
+django-cacheops
+redis
+django-cors-headers
+social-auth-app-django
