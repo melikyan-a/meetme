@@ -18,7 +18,7 @@ class MeetmeUserManager(BaseUserManager):
     def _create_user(self, username, password, **extra_fields):
         # if not email:
         #     raise ValueError('The given email must be set')
-        username = self.normalize_username(username)
+        # username = self.normalize_username(username)
         user = self.model(username=username, **extra_fields)
         user.set_password(password)
         user.save(using=self._db)
