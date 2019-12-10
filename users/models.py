@@ -82,7 +82,7 @@ class AbstractCUser(AbstractBaseUser, PermissionsMixin):
 
     objects = MeetmeUserManager()
 
-    USERNAME_FIELD = 'username'
+    USERNAME_FIELD = 'email'
 
     class Meta:
         verbose_name = _('user')

@@ -172,7 +172,7 @@ SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [   # map fields
     ('name', 'name'),
     ('email', 'email'),
     ('link', 'profile_url'),
-    ('gender', 'gender'),
+    ('gender', 'sex'),
 ]
 
 SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
