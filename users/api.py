@@ -11,10 +11,14 @@ from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth import get_user_model
 UserModel = get_user_model()
-from django.contrib.auth import login
+# from django.contrib.auth import login
 from social_django.utils import psa
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
+import requests
+import json
+from django.core import files
+from io import BytesIO
 
 
 @csrf_exempt
@@ -24,14 +28,28 @@ def register_by_access_token(request, backend):
     serializer = SocialTokenSerializer(data=request.data)
     serializer.is_valid(raise_exception=True)
     access_token = request.data.get('access_token')
+    provider = request.backend.name
     try:
         user = request.backend.do_auth(access_token)
-        if user:
-            login(request, user)
-            token, created = Token.objects.get_or_create(user=user)
-            return Response({'token': token.key}, status=status.HTTP_200_OK)
     except Exception:
-        return Response({'wrong token': access_token}, status=status.HTTP_401_UNAUTHORIZED)
+        return Response({"message": "The access token could not be decrypted"}, status=status.HTTP_400_BAD_REQUEST)
+    if user:
+        auth_token = Token.objects.get(user=user)
+        if 'facebook' in provider:
+            uid = json.loads(requests.get('https://graph.facebook.com/v3.2/me?access_token={}'.format(access_token)).text)
+            if 'id' in uid:
+                url = (
+                    'http://graph.facebook.com/{0}/picture?type=large'
+                ).format(uid['id'])
+                resp = requests.get(url)
+                fp = BytesIO()
+                fp.write(resp.content)
+                user.avatar.save('photo.jpg', files.File(fp))
+        else:
+            pass
+        return Response({'token': '{}'.format(auth_token)}, status=status.HTTP_200_OK)
+    else:
+        return Response({'error': 'Some error'}, status=status.HTTP_404_NOT_FOUND)
 
 
 # Get user auth token

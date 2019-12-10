@@ -162,17 +162,12 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 # FACEBOOK
-SOCIAL_AUTH_FACEBOOK_KEY = '291739584851474'          			   # App ID
-SOCIAL_AUTH_FACEBOOK_SECRET = '978c8a2f0e697308744b764f5cdbdaed'   # App Secret
-SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'user_link']
-SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {'fields': 'id, name, email, picture.type(large), link, '
-                                                       'gender, birthday'}
-SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [   # map fields
-    ('name', 'name'),
-    ('email', 'email'),
-    ('picture', 'picture'),
-    ('link', 'profile_url'),
-    ('gender', 'gender'),
-    ('birthday', 'birthday'),
-]
+SOCIAL_AUTH_FACEBOOK_KEY = '611444286267619'          			   # App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = '888cc21f13b2b9096365038782512dd4'   # App Secret
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
+   'fields': 'id, name, email'
+}
+SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
+SOCIAL_AUTH_URL_NAMESPACE = 'social'
 SOCIAL_AUTH_USER_MODEL = 'users.MeetUser'
