@@ -124,7 +124,7 @@ class EASerializer(serializers.Serializer):
             item = {
                 'id': a.pk,
                 'name': a.name,
-                'cat': a.category.name,
+                'cat': a.category.get_name_display(),
                 'image': a.get_image(),
                 "like": False,
             }
@@ -140,7 +140,7 @@ class EASerializer(serializers.Serializer):
             item = {
                 'id': e.pk,
                 'name': e.name,
-                'cat': e.category.name,
+                'cat': e.category.get_name_display(),
                 'dt': e.dt,
                 'image': e.get_image(),
                 'like': False
