@@ -58,7 +58,7 @@ class UserLikemeSerializer(serializers.Serializer):
             events = self.likedEvents(uevent, evList)
             liked = self.LikedUser(likedList, u.id)
             disliked = self.DislikedUser(dislikedList, u.id)
-            if liked and disliked and activity or events:
+            if bool(liked and disliked) and bool(activity or events):
                 item = {
                     'id': u.pk,
                     'name': u.username,
