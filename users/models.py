@@ -60,6 +60,7 @@ class AbstractCUser(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(_('last name'), max_length=150, null=True, blank=True)
     sex = models.CharField(max_length=6, choices=SEX, default='empty', verbose_name=_('Gender'))
     is_subscriber = models.BooleanField(default=False, verbose_name=_('Is news subscriber'))
+    profile_url = models.CharField(_('facebook profile url'), max_length=250, null=True, blank=True)
 
     avatar = models.ImageField(max_length=127, verbose_name=_('Profile photo'),
                                upload_to=path.join('user', 'logo'), default='./user/logo/default.png')
@@ -82,7 +83,7 @@ class AbstractCUser(AbstractBaseUser, PermissionsMixin):
 
     objects = MeetmeUserManager()
 
-    USERNAME_FIELD = 'email'
+    USERNAME_FIELD = 'username'
 
     class Meta:
         verbose_name = _('user')
