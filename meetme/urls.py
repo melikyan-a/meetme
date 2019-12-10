@@ -13,7 +13,7 @@ router.register(r'', users_api.UserRelationViewSet, base_name='user_rel')
 
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path('api/', include(router.urls)),
     path('admin/', admin.site.urls),
     path('i18n/', include('django.conf.urls.i18n')),
     path('', include('social_django.urls', namespace='social')),
