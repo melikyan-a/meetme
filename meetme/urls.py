@@ -17,10 +17,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('i18n/', include('django.conf.urls.i18n')),
     path('', include('social_django.urls', namespace='social')),
-    path('register-by-token/<backend>/', users_api.register_by_access_token, name='register_by_access_token'),
-    path('api-token-auth/', users_api.CustomAuthToken.as_view()),
-    path('change-password/', users_api.ChangePasswordView.as_view()),
-    path('user-profile/', users_api.MeetUserProfile.as_view()),
+    path('api/register-by-token/<backend>/', users_api.register_by_access_token, name='register_by_access_token'),
+    path('api/api-token-auth/', users_api.CustomAuthToken.as_view()),
+    path('api/change-password/', users_api.ChangePasswordView.as_view()),
+    path('api/user-profile/', users_api.MeetUserProfile.as_view()),
 ]
 
 if settings.DEBUG:
