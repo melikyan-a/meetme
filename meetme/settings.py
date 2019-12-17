@@ -168,12 +168,13 @@ SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'user_link', 'user_gender']
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
    'fields': 'id, name, email, link, gender'
 }
-# SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [   # map fields
-#     ('name', 'name'),
-#     ('email', 'email'),
-#     ('profile_url', 'link'),
-#     ('sex', 'gender'),
-# ]
+
+SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [   # map fields
+    ('name', 'name'),
+    ('email', 'email'),
+    ('link', 'link'),
+    ('gender', 'gender'),
+]
 
 SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
 SOCIAL_AUTH_URL_NAMESPACE = 'social'
