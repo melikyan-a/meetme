@@ -7,6 +7,7 @@ UserModel = get_user_model()
 @receiver(post_save, sender=UserModel)
 def add_facebook_profile_link(sender, instance, created, **kwargs):
     if instance.pk:
-        data = instance.social_auth.all().values('extra_data')[0]
-        instance.link = 'test'
-        instance.save()
+        user = UserModel.objects.get(pk=instance.pk)
+        data = user.social_auth.all().values('extra_data')[0]
+        user.link = data['extra_data']['link']
+        user.save()
