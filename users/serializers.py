@@ -185,6 +185,7 @@ class UserCrossLikedSerializer(serializers.Serializer):
                     'last_name': u.last_name,
                     'email': u.email,
                     'avatar': u.get_avatar(),
+                    'link': u.link,
                 }
                 resp.append(item)
 
