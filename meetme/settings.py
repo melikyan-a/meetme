@@ -166,13 +166,13 @@ SOCIAL_AUTH_FACEBOOK_KEY = '611444286267619'          			   # App ID
 SOCIAL_AUTH_FACEBOOK_SECRET = '888cc21f13b2b9096365038782512dd4'   # App Secret
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'user_link', 'user_gender']
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
-   'fields': 'id, name, email, picture.type(large), link, gender'
+   'fields': 'id, name, email, link, gender'
 }
+
 
 SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [   # map fields
     ('name', 'name'),
     ('email', 'email'),
-    ('picture', 'avatar'),
     ('link', 'link'),
     ('gender', 'gender'),
 ]
