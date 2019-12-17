@@ -166,24 +166,13 @@ SOCIAL_AUTH_FACEBOOK_KEY = '611444286267619'          			   # App ID
 SOCIAL_AUTH_FACEBOOK_SECRET = '888cc21f13b2b9096365038782512dd4'   # App Secret
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'user_link', 'user_gender']
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
-   'fields': 'id, name, email, link, gender'
+   'fields': 'id, name, email, picture.type(large), link, gender'
 }
-
-SOCIAL_AUTH_PIPELINE = (
-    'social_core.pipeline.social_auth.social_details',
-    'social_core.pipeline.social_auth.social_uid',
-    'social_core.pipeline.social_auth.social_user',
-    'social_core.pipeline.user.get_username',
-    'social_core.pipeline.user.create_user',
-    'social_core.pipeline.social_auth.associate_user',
-    'social_core.pipeline.social_auth.load_extra_data',
-    'social_core.pipeline.user.user_details',
-    'social_core.pipeline.social_auth.associate_by_email',
-)
 
 SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [   # map fields
     ('name', 'name'),
     ('email', 'email'),
+    ('picture', 'avatar'),
     ('link', 'link'),
     ('gender', 'gender'),
 ]

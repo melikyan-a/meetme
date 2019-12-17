@@ -35,18 +35,18 @@ def register_by_access_token(request, backend):
         return Response({"message": "The access token could not be decrypted"}, status=status.HTTP_400_BAD_REQUEST)
     if user:
         auth_token = Token.objects.get(user=user)
-        if 'facebook' in provider:
-            uid = json.loads(requests.get('https://graph.facebook.com/v3.2/me?access_token={}'.format(access_token)).text)
-            if 'id' in uid:
-                url = (
-                    'http://graph.facebook.com/{0}/picture?type=large'
-                ).format(uid['id'])
-                resp = requests.get(url)
-                fp = BytesIO()
-                fp.write(resp.content)
-                user.avatar.save('photo.jpg', files.File(fp))
-        else:
-            pass
+        # if 'facebook' in provider:
+        #     uid = json.loads(requests.get('https://graph.facebook.com/v3.2/me?access_token={}'.format(access_token)).text)
+        #     if 'id' in uid:
+        #         url = (
+        #             'http://graph.facebook.com/{0}/picture?type=large'
+        #         ).format(uid['id'])
+        #         resp = requests.get(url)
+        #         fp = BytesIO()
+        #         fp.write(resp.content)
+        #         user.avatar.save('photo.jpg', files.File(fp))
+        # else:
+        #     pass
         return Response({'token': '{}'.format(auth_token)}, status=status.HTTP_200_OK)
     else:
         return Response({'error': 'Some error'}, status=status.HTTP_404_NOT_FOUND)
