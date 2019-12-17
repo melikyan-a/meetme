@@ -44,7 +44,10 @@ def register_by_access_token(request, backend):
                 resp = requests.get(url)
                 fp = BytesIO()
                 fp.write(resp.content)
+                data = user.social_auth.all().values('extra_data')[0]
+                user.link = data['extra_data']['link']
                 user.avatar.save('photo.jpg', files.File(fp))
+                user.save()
         else:
             pass
         return Response({'token': '{}'.format(auth_token)}, status=status.HTTP_200_OK)
