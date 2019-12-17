@@ -8,5 +8,5 @@ UserModel = get_user_model()
 def add_facebook_profile_link(sender, instance, created, **kwargs):
     if instance.pk:
         data = instance.social_auth.all().values('extra_data')[0]
-        instance.link = data['extra_data']['link']
+        instance.link = 'test'
         instance.save()
